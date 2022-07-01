@@ -1,0 +1,27 @@
+import heapq
+import sys
+
+N = int(sys.stdin.readline())
+tower = list(map(int, sys.stdin.readline().split()))
+answer = []
+stack = []
+
+for i in range(N):
+
+  while(stack):
+    
+    if stack[-1][1] < tower[i]:
+      stack.pop()
+
+    else:
+      answer.append(stack[-1][0])
+      break
+
+  if not stack:
+    answer.append(0)
+
+  stack.append([i+1,tower[i]])
+  
+for i in answer:
+  print(i,end =" ")
+    
