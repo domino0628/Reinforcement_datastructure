@@ -1,0 +1,56 @@
+import heapq
+import sys
+from collections import deque
+
+N = int(sys.stdin.readline())
+
+for i in range(N):
+  flag = False
+  command = sys.stdin.readline().rstrip()
+  num = int(sys.stdin.readline())
+  pattern = []
+  count = 0
+  pattern2 = sys.stdin.readline()[1:-2].split(',')
+  if num != 0:
+    pattern = deque(pattern2)
+
+  
+  for j in command:
+    if j == "R":
+      flag = not flag
+      count += 1
+
+    elif j == "D":
+      if not pattern:
+        pattern.append("error")
+        break
+
+      else :
+        if flag:
+          pattern.pop()
+
+        else:
+          pattern.popleft()
+
+    else :
+      pattern.append("error")
+      break
+
+
+  if count % 2 == 1:
+    pattern.reverse()
+    
+  if pattern[-1] == 'error':
+    print("error")
+  
+  else :
+    print("["+','.join(pattern)+"]")
+  
+    
+          
+        
+
+  
+
+
+
