@@ -1,0 +1,52 @@
+from collections import deque
+import sys
+
+import heapq
+import sys
+from collections import deque
+
+N = int(sys.stdin.readline())
+
+for i in range(N):
+  flag = False
+  command = sys.stdin.readline().rstrip()
+  num = int(sys.stdin.readline())
+  pattern2 = sys.stdin.readline()[1:-2].split(',')
+  pattern = deque(pattern2)
+  count = 0
+  
+  if num == 0:
+    pattern = []
+    
+    
+  
+  
+  for j in command:
+    if j == "R":
+      
+      count += 1
+
+    elif j == "D":
+      if not pattern:
+        flag = True
+        print("error")
+        break
+
+      else :
+        if count % 2 == 1:
+          pattern.pop()
+
+        else:
+          pattern.popleft()
+
+    else :
+      flag = True
+      print("error")
+      break
+
+  if not flag:
+    if count % 2 == 1:
+      pattern.reverse()
+      
+    print("["+','.join(pattern)+"]")
+ 
